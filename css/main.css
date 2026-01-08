@@ -1,31 +1,47 @@
 /* ============================================
-   SatGPT Knowledge Portal - Design System
-   UN ESCAP Knowledge-Sharing Platform
+   SatGPT Hub - Design System
+   UN ESCAP Knowledge Platform
    ============================================ */
 
 /* CSS Variables */
 :root {
-    /* Colors - Deep space theme with UN blue accents */
-    --color-bg-primary: #0a0e17;
-    --color-bg-secondary: #111827;
-    --color-bg-tertiary: #1a2234;
-    --color-bg-card: #151d2e;
+    /* Colors - Light theme with UN Color Palette */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8f9fa;
+    --color-bg-tertiary: #e9ecef;
+    --color-bg-card: #ffffff;
     
-    --color-accent-primary: #00d4aa;
-    --color-accent-secondary: #0099ff;
-    --color-accent-tertiary: #a855f7;
-    --color-accent-warm: #ff6b35;
+    /* UN Color Palette - True Values */
+    --color-accent-primary: #009EDB;      /* UN Blue */
+    --color-accent-secondary: #72BF44;    /* UN Green */
+    --color-accent-tertiary: #A05FB4;     /* UN Purple */
+    --color-accent-warm: #F58220;         /* UN Orange */
+    --color-accent-yellow: #FFC800;       /* UN Yellow */
+    --color-accent-red: #ED1847;          /* UN Red */
     
-    --color-text-primary: #f1f5f9;
-    --color-text-secondary: #94a3b8;
-    --color-text-muted: #64748b;
+    /* UN Tints (for backgrounds) */
+    --color-un-blue-tint: #C5DFEF;
+    --color-un-green-tint: #CEE3A0;
+    --color-un-yellow-tint: #F8E66B;
+    --color-un-orange-tint: #FEDCBD;
+    --color-un-red-tint: #F9C0C5;
+    --color-un-purple-tint: #D5B4D6;
+    --color-un-gray-tint: #DED9D5;
     
-    --color-border: rgba(148, 163, 184, 0.1);
-    --color-border-hover: rgba(0, 212, 170, 0.3);
+    /* UN Shades (for emphasis) */
+    --color-un-blue-shade: #004987;
+    --color-un-green-shade: #006747;
+    
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: #4a5568;
+    --color-text-muted: #718096;
+    
+    --color-border: rgba(0, 158, 219, 0.15);
+    --color-border-hover: rgba(0, 158, 219, 0.4);
     
     /* Typography */
     --font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'Inter', monospace;
+    --font-mono: 'Space Mono', monospace;
     
     /* Spacing */
     --space-xs: 0.25rem;
@@ -49,11 +65,11 @@
     --radius-xl: 16px;
     --radius-full: 9999px;
     
-    /* Shadows */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 40px rgba(0, 212, 170, 0.15);
+    /* Shadows - Light theme */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 4px 20px rgba(0, 158, 219, 0.15);
 }
 
 /* Reset & Base */
@@ -106,9 +122,10 @@ img {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10, 14, 23, 0.85);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
 }
 
 .nav-container {
@@ -192,7 +209,7 @@ img {
     top: 100%;
     left: 0;
     min-width: 200px;
-    background: var(--color-bg-secondary);
+    background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: var(--space-sm);
@@ -266,15 +283,15 @@ img {
     position: absolute;
     inset: 0;
     background-image: 
-        linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(0, 158, 219, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 158, 219, 0.08) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
 }
 
 .orbit {
     position: absolute;
-    border: 1px solid rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 158, 219, 0.2);
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -313,7 +330,7 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 30px var(--color-accent-primary);
+    box-shadow: 0 0 20px rgba(0, 158, 219, 0.6);
     animation: orbit-satellite 15s linear infinite;
 }
 
@@ -340,9 +357,9 @@ img {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-accent-primary);
-    background: rgba(0, 212, 170, 0.1);
-    border: 1px solid rgba(0, 212, 170, 0.2);
+    color: var(--color-un-blue-shade);
+    background: var(--color-un-blue-tint);
+    border: 1px solid rgba(0, 158, 219, 0.3);
     border-radius: var(--radius-full);
     margin-bottom: var(--space-lg);
 }
@@ -396,13 +413,13 @@ img {
 
 .btn-primary {
     background: var(--color-accent-primary);
-    color: var(--color-bg-primary);
+    color: #ffffff;
 }
 
 .btn-primary:hover {
-    background: #00eabc;
+    background: var(--color-un-blue-shade);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 212, 170, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 158, 219, 0.3);
 }
 
 .btn-secondary {
@@ -511,12 +528,13 @@ section {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     transition: var(--transition-base);
+    box-shadow: var(--shadow-sm);
 }
 
 .feature-card:hover {
-    border-color: var(--color-border-hover);
+    border-color: var(--color-accent-primary);
     transform: translateY(-4px);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-md);
 }
 
 .feature-icon {
@@ -568,7 +586,7 @@ section {
     position: absolute;
     bottom: var(--space-lg);
     right: var(--space-lg);
-    background: rgba(10, 14, 23, 0.95);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     padding: var(--space-lg);
     border-radius: var(--radius-md);
@@ -609,7 +627,7 @@ section {
    ============================================ */
 
 .stats {
-    background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
+    background: linear-gradient(135deg, var(--color-un-blue-tint), var(--color-bg-secondary));
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }
@@ -859,8 +877,8 @@ section {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    background: rgba(0, 212, 170, 0.1);
-    color: var(--color-accent-primary);
+    background: var(--color-un-blue-tint);
+    color: var(--color-un-blue-shade);
     border-radius: var(--radius-sm);
     margin-bottom: var(--space-sm);
 }
@@ -989,7 +1007,7 @@ section {
         right: 0;
         bottom: 0;
         flex-direction: column;
-        background: var(--color-bg-secondary);
+        background: var(--color-bg-primary);
         padding: var(--space-lg);
         transform: translateX(100%);
         transition: var(--transition-base);
@@ -1011,7 +1029,7 @@ section {
         transform: none;
         box-shadow: none;
         border: none;
-        background: var(--color-bg-tertiary);
+        background: var(--color-bg-secondary);
         margin-top: var(--space-sm);
         display: none;
     }
@@ -1103,14 +1121,14 @@ section {
 }
 
 .leaflet-popup-content-wrapper {
-    background: var(--color-bg-card);
+    background: var(--color-bg-primary);
     color: var(--color-text-primary);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
 }
 
 .leaflet-popup-tip {
-    background: var(--color-bg-card);
+    background: var(--color-bg-primary);
 }
 
 .leaflet-popup-content {
@@ -1123,13 +1141,13 @@ section {
 }
 
 .leaflet-control-zoom a {
-    background: var(--color-bg-card) !important;
+    background: var(--color-bg-primary) !important;
     color: var(--color-text-primary) !important;
     border: 1px solid var(--color-border) !important;
 }
 
 .leaflet-control-zoom a:hover {
-    background: var(--color-bg-tertiary) !important;
+    background: var(--color-bg-secondary) !important;
 }
 
 /* Custom Markers */
@@ -1137,7 +1155,7 @@ section {
     background: var(--color-accent-primary);
     border-radius: 50%;
     border: 3px solid var(--color-bg-primary);
-    box-shadow: 0 0 10px rgba(0, 212, 170, 0.5);
+    box-shadow: 0 0 10px rgba(0, 158, 219, 0.5);
 }
 
 /* Animation for page load */
