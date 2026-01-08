@@ -1,8 +1,8 @@
-# SatGPT Hub
+# SatGPT Knowledge Portal
 
-**Satellite Intelligence for Sustainable Development**
+**Transforming Data into Decisions, Innovation to Impact**
 
-A UN ESCAP knowledge platform providing AI-driven geospatial insights, case studies, and capacity building resources for evidence-based decision making in the Asia-Pacific region.
+SatGPT is an innovative solution that integrates Large Language Models (LLMs), cloud computing platforms, and Earth observation data for flood hotspot mapping. SatGPT represents a fully functional, next-generation spatial decision support system designed for rapid deployment, particularly in resource-limited contexts.
 
 ![SatGPT Hub Preview](assets/preview.png)
 
