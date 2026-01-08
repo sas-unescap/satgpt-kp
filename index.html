@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SatGPT Hub | ESCAP Knowledge Platform</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">◉</span>
+                <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+            </a>
+            
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">SatGPT</a></li>
+                <li><a href="pages/case-studies.html">Case Studies</a></li>
+                <li><a href="pages/elearning.html">eLearning</a></li>
+                <li class="has-dropdown">
+                    <a href="pages/resources.html">Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="pages/resources.html#quickstart">Quick Start</a></li>
+                        <li><a href="pages/resources.html#tutorials">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="pages/publications.html">Publications</a>
+                    <ul class="dropdown">
+                        <li><a href="pages/publications.html#peer-reviewed">Peer-reviewed Papers</a></li>
+                        <li><a href="pages/publications.html#working-papers">ESCAP Working Papers</a></li>
+                        <li><a href="pages/publications.html#blogs">Blogs</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="pages/about.html">About</a>
+                    <ul class="dropdown">
+                        <li><a href="pages/about.html#escap">ESCAP</a></li>
+                        <li><a href="pages/about.html#partners">Partners</a></li>
+                        <li><a href="pages/about.html#contributors">Contributors</a></li>
+                    </ul>
+                </li>
+                <li><a href="pages/disclaimer.html">Disclaimer</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            <div class="satellite"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">UN ESCAP Initiative</div>
+            <h1>SatGPT<span class="accent">Hub</span></h1>
+            <p class="hero-subtitle">Satellite Intelligence for Sustainable Development</p>
+            <p class="hero-description">Empowering Asia-Pacific nations with AI-driven geospatial insights, case studies, and capacity building resources for evidence-based decision making.</p>
+            <div class="hero-actions">
+                <a href="pages/case-studies.html" class="btn btn-primary">Explore Case Studies</a>
+                <a href="pages/elearning.html" class="btn btn-secondary">Start Learning</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Platform Features</span>
+                <h2>Geospatial AI at Your Fingertips</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3>Interactive GIS Maps</h3>
+                    <p>Explore satellite-derived insights through our web-based mapping platform featuring real-world case studies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18M9 21V9"/>
+                        </svg>
+                    </div>
+                    <h3>Data Dashboard</h3>
+                    <p>Process and visualize geospatial data with our integrated analytics dashboard for actionable insights.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                            <path d="M12 14v7"/>
+                        </svg>
+                    </div>
+                    <h3>eLearning Modules</h3>
+                    <p>Build capacity with structured courses on satellite data analysis and AI applications for SDGs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Publications Library</h3>
+                    <p>Access peer-reviewed papers, working papers, and technical blogs from ESCAP and partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Preview Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Case Studies Map</span>
+                <h2>Explore Regional Insights</h2>
+                <p>Interactive map showcasing satellite-derived analysis across the Asia-Pacific region</p>
+            </div>
+            <div class="map-wrapper">
+                <div id="preview-map"></div>
+                <div class="map-legend">
+                    <h4>Case Study Categories</h4>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #00d4aa;"></span>
+                        <span>Agriculture & Food Security</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #0099ff;"></span>
+                        <span>Water Resources</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #ff6b35;"></span>
+                        <span>Disaster Risk Reduction</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #a855f7;"></span>
+                        <span>Urban Development</span>
+                    </div>
+                </div>
+            </div>
+            <div class="map-cta">
+                <a href="pages/case-studies.html" class="btn btn-primary">View All Case Studies →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="58">0</span>
+                    <span class="stat-label">Member Countries</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="24">0</span>
+                    <span class="stat-label">Case Studies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="12">0</span>
+                    <span class="stat-label">Training Modules</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="45">0</span>
+                    <span class="stat-label">Publications</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Network</span>
+                <h2>Partners & Collaborators</h2>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <div class="partner-placeholder">UN ESCAP</div>
+                </div>
+                <div class="partner-logo">
+                    <div class="partner-placeholder">Partner 1</div>
+                </div>
+                <div class="partner-logo">
+                    <div class="partner-placeholder">Partner 2</div>
+                </div>
+                <div class="partner-logo">
+                    <div class="partner-placeholder">Partner 3</div>
+                </div>
+                <div class="partner-logo">
+                    <div class="partner-placeholder">Partner 4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to harness satellite intelligence?</h2>
+                <p>Join the growing community of practitioners using geospatial AI for sustainable development.</p>
+                <div class="cta-actions">
+                    <a href="pages/contact.html" class="btn btn-primary">Get Started</a>
+                    <a href="pages/resources.html" class="btn btn-outline">View Resources</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">◉</span>
+                        <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+                    </a>
+                    <p>A UN ESCAP initiative supporting sustainable development through satellite intelligence and AI.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="pages/case-studies.html">Case Studies</a></li>
+                        <li><a href="pages/elearning.html">eLearning</a></li>
+                        <li><a href="pages/resources.html">Resources</a></li>
+                        <li><a href="pages/publications.html">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="pages/about.html#escap">ESCAP</a></li>
+                        <li><a href="pages/about.html#partners">Partners</a></li>
+                        <li><a href="pages/about.html#contributors">Contributors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="pages/disclaimer.html">Disclaimer</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 United Nations ESCAP. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLearning | SatGPT Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .course-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+        
+        .course-card:hover {
+            border-color: var(--color-border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .course-thumbnail {
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-icon {
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+        
+        .course-level {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            padding: var(--space-xs) var(--space-sm);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+        
+        .course-level.beginner { background: rgba(0, 212, 170, 0.2); color: #00d4aa; }
+        .course-level.intermediate { background: rgba(0, 153, 255, 0.2); color: #0099ff; }
+        .course-level.advanced { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+        
+        .course-body {
+            padding: var(--space-xl);
+        }
+        
+        .course-body h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .course-body p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .course-meta {
+            display: flex;
+            gap: var(--space-lg);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+        
+        .course-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .learning-path {
+            background: var(--color-bg-secondary);
+            padding: var(--space-3xl) 0;
+            margin-top: var(--space-3xl);
+        }
+        
+        .path-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .path-steps::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 60px;
+            right: 60px;
+            height: 2px;
+            background: var(--color-border);
+        }
+        
+        .path-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-bg-card);
+            border: 2px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            transition: var(--transition-base);
+        }
+        
+        .path-step:hover .step-number {
+            border-color: var(--color-accent-primary);
+            color: var(--color-accent-primary);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            max-width: 150px;
+        }
+        
+        @media (max-width: 768px) {
+            .path-steps {
+                flex-direction: column;
+                gap: var(--space-xl);
+            }
+            
+            .path-steps::before {
+                top: 0;
+                bottom: 0;
+                left: 24px;
+                right: auto;
+                width: 2px;
+                height: auto;
+            }
+            
+            .path-step {
+                flex-direction: row;
+                text-align: left;
+                gap: var(--space-lg);
+            }
+            
+            .step-number {
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">◉</span>
+                <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">SatGPT</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="elearning.html" class="active">eLearning</a></li>
+                <li class="has-dropdown">
+                    <a href="resources.html">Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#quickstart">Quick Start</a></li>
+                        <li><a href="resources.html#tutorials">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="publications.html">Publications</a>
+                    <ul class="dropdown">
+                        <li><a href="publications.html#peer-reviewed">Peer-reviewed Papers</a></li>
+                        <li><a href="publications.html#working-papers">ESCAP Working Papers</a></li>
+                        <li><a href="publications.html#blogs">Blogs</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <span class="section-tag">Capacity Building</span>
+            <h1>eLearning Center</h1>
+            <p>Build your expertise in satellite data analysis and AI applications for sustainable development</p>
+        </div>
+    </header>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <span class="course-icon">🛰️</span>
+                        <span class="course-level beginner">Beginner</span>
+                    </div>
+                    <div class="course-body">
+                        <h3>Introduction to Remote Sensing</h3>
+                        <p>Learn the fundamentals of satellite imagery, sensors, and data acquisition for Earth observation.</p>
+                        <div class="course-meta">
+                            <span>⏱️ 4 hours</span>
+                            <span>📚 8 modules</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <span class="course-icon">🗺️</span>
+                        <span class="course-level beginner">Beginner</span>
+                    </div>
+                    <div class="course-body">
+                        <h3>GIS Fundamentals</h3>
+                        <p>Master geographic information systems concepts, spatial data handling, and basic mapping techniques.</p>
+                        <div class="course-meta">
+                            <span>⏱️ 6 hours</span>
+                            <span>📚 10 modules</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <span class="course-icon">🌍</span>
+                        <span class="course-level intermediate">Intermediate</span>
+                    </div>
+                    <div class="course-body">
+                        <h3>Google Earth Engine Essentials</h3>
+                        <p>Harness cloud-based geospatial processing for large-scale environmental monitoring and analysis.</p>
+                        <div class="course-meta">
+                            <span>⏱️ 8 hours</span>
+                            <span>📚 12 modules</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <span class="course-icon">🤖</span>
+                        <span class="course-level intermediate">Intermediate</span>
+                    </div>
+                    <div class="course-body">
+                        <h3>AI for Geospatial Analysis</h3>
+                        <p>Apply machine learning and deep learning techniques to satellite imagery classification and detection.</p>
+                        <div class="course-meta">
+                            <span>⏱️ 10 hours</span>
+                            <span>📚 15 modules</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <span class="course-icon">🌾</span>
+                        <span class="course-level intermediate">Intermediate</span>
+                    </div>
+                    <div class="course-body">
+                        <h3>Agricultural Monitoring</h3>
+                        <p>Use satellite data for crop mapping, yield estimation, and food security assessment.</p>
+                        <div class="course-meta">
+                            <span>⏱️ 6 hours</span>
+                            <span>📚 9 modules</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-thumbnail">
+                        <span class="course-icon">🌊</span>
+                        <span class="course-level advanced">Advanced</span>
+                    </div>
+                    <div class="course-body">
+                        <h3>Flood Mapping with SAR</h3>
+                        <p>Advanced techniques for flood extent mapping using Synthetic Aperture Radar imagery.</p>
+                        <div class="course-meta">
+                            <span>⏱️ 8 hours</span>
+                            <span>📚 11 modules</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="learning-path">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Recommended Path</span>
+                <h2>Your Learning Journey</h2>
+                <p>Follow our structured pathway from beginner to expert</p>
+            </div>
+            <div class="path-steps">
+                <div class="path-step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <div class="step-title">Foundations</div>
+                        <div class="step-desc">Remote sensing & GIS basics</div>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <div class="step-title">Tools</div>
+                        <div class="step-desc">Google Earth Engine & Python</div>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <div class="step-title">Applications</div>
+                        <div class="step-desc">Domain-specific analysis</div>
+                    </div>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <div class="step-title">AI Integration</div>
+                        <div class="step-desc">Machine learning & SatGPT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">◉</span>
+                        <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+                    </a>
+                    <p>A UN ESCAP initiative supporting sustainable development through satellite intelligence and AI.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="elearning.html">eLearning</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 United Nations ESCAP. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

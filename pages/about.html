@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | SatGPT Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .about-section {
+            padding: var(--space-3xl) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .about-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-3xl);
+            align-items: start;
+        }
+        
+        .about-label {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .about-label h2 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .about-label p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .about-content p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-lg);
+            line-height: 1.8;
+        }
+        
+        .about-content h3 {
+            font-size: 1.1rem;
+            margin: var(--space-xl) 0 var(--space-md);
+            color: var(--color-accent-primary);
+        }
+        
+        .about-content ul {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-lg);
+            padding-left: var(--space-lg);
+        }
+        
+        .about-content li {
+            margin-bottom: var(--space-sm);
+            list-style: disc;
+        }
+        
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .partner-card {
+            padding: var(--space-xl);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-base);
+        }
+        
+        .partner-card:hover {
+            border-color: var(--color-border-hover);
+        }
+        
+        .partner-logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: var(--color-bg-tertiary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+        
+        .partner-card h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .partner-card p {
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        .contributor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .contributor-card {
+            text-align: center;
+            padding: var(--space-xl);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-base);
+        }
+        
+        .contributor-card:hover {
+            border-color: var(--color-border-hover);
+        }
+        
+        .contributor-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+            border-radius: 50%;
+            margin: 0 auto var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-bg-primary);
+        }
+        
+        .contributor-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contributor-role {
+            color: var(--color-text-muted);
+            font-size: 0.8rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contributor-org {
+            color: var(--color-accent-primary);
+            font-size: 0.75rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+            
+            .about-label {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">◉</span>
+                <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">SatGPT</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="elearning.html">eLearning</a></li>
+                <li class="has-dropdown">
+                    <a href="resources.html">Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#quickstart">Quick Start</a></li>
+                        <li><a href="resources.html#tutorials">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="publications.html">Publications</a>
+                    <ul class="dropdown">
+                        <li><a href="publications.html#peer-reviewed">Peer-reviewed Papers</a></li>
+                        <li><a href="publications.html#working-papers">ESCAP Working Papers</a></li>
+                        <li><a href="publications.html#blogs">Blogs</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="about.html" class="active">About</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <span class="section-tag">About Us</span>
+            <h1>About SatGPT Hub</h1>
+            <p>Empowering sustainable development through satellite intelligence and AI-driven geospatial solutions</p>
+        </div>
+    </header>
+
+    <section class="page-content">
+        <div class="container">
+            <!-- ESCAP Section -->
+            <div id="escap" class="about-section">
+                <div class="about-grid">
+                    <div class="about-label">
+                        <h2>UN ESCAP</h2>
+                        <p>Our parent organization</p>
+                    </div>
+                    <div class="about-content">
+                        <p>The United Nations Economic and Social Commission for Asia and the Pacific (ESCAP) is the regional development arm of the United Nations for the Asia-Pacific region. With 53 Member States and 9 Associate Members, ESCAP is the most comprehensive of the five regional commissions.</p>
+                        
+                        <p>SatGPT Hub is an initiative of ESCAP's Space Applications Section, working to democratize access to satellite data and AI-powered geospatial analysis for sustainable development across the region.</p>
+                        
+                        <h3>Our Mission</h3>
+                        <p>To strengthen the capacity of ESCAP member states to leverage satellite technology and artificial intelligence for evidence-based decision making, particularly in support of the 2030 Agenda for Sustainable Development.</p>
+                        
+                        <h3>Key Focus Areas</h3>
+                        <ul>
+                            <li>Disaster risk reduction and early warning systems</li>
+                            <li>Agricultural monitoring and food security</li>
+                            <li>Water resources management</li>
+                            <li>Urban development and planning</li>
+                            <li>Climate change monitoring and adaptation</li>
+                            <li>SDG indicator monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partners Section -->
+            <div id="partners" class="about-section">
+                <div class="about-grid">
+                    <div class="about-label">
+                        <h2>Partners</h2>
+                        <p>Collaborating organizations</p>
+                    </div>
+                    <div class="about-content">
+                        <p>SatGPT Hub is built through strategic partnerships with leading institutions across the Asia-Pacific region and beyond.</p>
+                        
+                        <div class="partner-grid">
+                            <div class="partner-card">
+                                <div class="partner-logo-placeholder">Logo</div>
+                                <h4>Space Agency Partner 1</h4>
+                                <p>Providing satellite data access and technical expertise for regional applications.</p>
+                            </div>
+                            <div class="partner-card">
+                                <div class="partner-logo-placeholder">Logo</div>
+                                <h4>Academic Institution</h4>
+                                <p>Research collaboration on AI/ML methods for geospatial analysis.</p>
+                            </div>
+                            <div class="partner-card">
+                                <div class="partner-logo-placeholder">Logo</div>
+                                <h4>Technology Partner</h4>
+                                <p>Cloud computing infrastructure and development support.</p>
+                            </div>
+                            <div class="partner-card">
+                                <div class="partner-logo-placeholder">Logo</div>
+                                <h4>Development Organization</h4>
+                                <p>Funding and implementation support for capacity building initiatives.</p>
+                            </div>
+                            <div class="partner-card">
+                                <div class="partner-logo-placeholder">Logo</div>
+                                <h4>Regional Organization</h4>
+                                <p>Coordination and outreach across member countries.</p>
+                            </div>
+                            <div class="partner-card">
+                                <div class="partner-logo-placeholder">Logo</div>
+                                <h4>NGO Partner</h4>
+                                <p>Field implementation and community engagement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contributors Section -->
+            <div id="contributors" class="about-section">
+                <div class="about-grid">
+                    <div class="about-label">
+                        <h2>Contributors</h2>
+                        <p>The team behind SatGPT Hub</p>
+                    </div>
+                    <div class="about-content">
+                        <p>SatGPT Hub is developed and maintained by a dedicated team of geospatial experts, data scientists, and development practitioners.</p>
+                        
+                        <div class="contributor-grid">
+                            <div class="contributor-card">
+                                <div class="contributor-avatar">JD</div>
+                                <h4>Dr. Jane Doe</h4>
+                                <p class="contributor-role">Project Lead</p>
+                                <p class="contributor-org">UN ESCAP</p>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-avatar">AS</div>
+                                <h4>Amit Singh</h4>
+                                <p class="contributor-role">Senior Geospatial Analyst</p>
+                                <p class="contributor-org">UN ESCAP</p>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-avatar">ML</div>
+                                <h4>Dr. Ming Li</h4>
+                                <p class="contributor-role">AI/ML Specialist</p>
+                                <p class="contributor-org">Partner University</p>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-avatar">SR</div>
+                                <h4>Sarah Rahman</h4>
+                                <p class="contributor-role">Capacity Building Lead</p>
+                                <p class="contributor-org">UN ESCAP</p>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-avatar">TN</div>
+                                <h4>Taro Nakamura</h4>
+                                <p class="contributor-role">Platform Developer</p>
+                                <p class="contributor-org">Technology Partner</p>
+                            </div>
+                            <div class="contributor-card">
+                                <div class="contributor-avatar">PP</div>
+                                <h4>Priya Patel</h4>
+                                <p class="contributor-role">Data Analyst</p>
+                                <p class="contributor-org">UN ESCAP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">◉</span>
+                        <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+                    </a>
+                    <p>A UN ESCAP initiative supporting sustainable development through satellite intelligence and AI.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="elearning.html">eLearning</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 United Nations ESCAP. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

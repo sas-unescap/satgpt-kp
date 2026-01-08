@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | SatGPT Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .publication-card {
+            padding: var(--space-xl);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-lg);
+            transition: var(--transition-base);
+        }
+        
+        .publication-card:hover {
+            border-color: var(--color-border-hover);
+        }
+        
+        .publication-type {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-sm);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-md);
+        }
+        
+        .publication-type.journal { background: rgba(0, 153, 255, 0.15); color: #0099ff; }
+        .publication-type.working { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+        .publication-type.blog { background: rgba(0, 212, 170, 0.15); color: #00d4aa; }
+        
+        .publication-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+            line-height: 1.4;
+        }
+        
+        .publication-authors {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .publication-meta {
+            display: flex;
+            gap: var(--space-lg);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-md);
+        }
+        
+        .publication-abstract {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+        }
+        
+        .publication-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: var(--transition-fast);
+        }
+        
+        .publication-link.primary {
+            background: var(--color-accent-primary);
+            color: var(--color-bg-primary);
+        }
+        
+        .publication-link.primary:hover {
+            background: #00eabc;
+        }
+        
+        .publication-link.secondary {
+            background: var(--color-bg-tertiary);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+        }
+        
+        .publication-link.secondary:hover {
+            border-color: var(--color-border-hover);
+        }
+        
+        .filter-tags {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+        
+        .filter-tag {
+            padding: var(--space-sm) var(--space-md);
+            font-size: 0.8rem;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-full);
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--color-accent-primary);
+            border-color: var(--color-accent-primary);
+            color: var(--color-bg-primary);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">◉</span>
+                <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">SatGPT</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="elearning.html">eLearning</a></li>
+                <li class="has-dropdown">
+                    <a href="resources.html">Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#quickstart">Quick Start</a></li>
+                        <li><a href="resources.html#tutorials">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="publications.html" class="active">Publications</a>
+                    <ul class="dropdown">
+                        <li><a href="publications.html#peer-reviewed">Peer-reviewed Papers</a></li>
+                        <li><a href="publications.html#working-papers">ESCAP Working Papers</a></li>
+                        <li><a href="publications.html#blogs">Blogs</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <span class="section-tag">Research Library</span>
+            <h1>Publications</h1>
+            <p>Peer-reviewed research, working papers, and technical blogs on satellite applications for SDGs</p>
+        </div>
+    </header>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="peer-reviewed">Peer-reviewed Papers</button>
+                <button class="tab-btn" data-tab="working-papers">ESCAP Working Papers</button>
+                <button class="tab-btn" data-tab="blogs">Blogs</button>
+            </div>
+
+            <div id="peer-reviewed" class="tab-content active">
+                <div class="filter-tags">
+                    <span class="filter-tag active">All</span>
+                    <span class="filter-tag">Agriculture</span>
+                    <span class="filter-tag">Disasters</span>
+                    <span class="filter-tag">Water</span>
+                    <span class="filter-tag">Urban</span>
+                    <span class="filter-tag">AI/ML</span>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type journal">Journal Article</span>
+                    <h3>Deep Learning for Flood Detection in Sentinel-1 SAR Imagery: A Multi-temporal Approach for the Mekong Delta</h3>
+                    <p class="publication-authors">Chen, L., Nguyen, T., Patel, R., & Kim, S.</p>
+                    <div class="publication-meta">
+                        <span>Remote Sensing of Environment, 2024</span>
+                        <span>DOI: 10.1016/j.rse.2024.xxxxx</span>
+                    </div>
+                    <p class="publication-abstract">This study presents a novel deep learning framework for automated flood mapping using Sentinel-1 SAR imagery. The method achieves 94% accuracy across diverse flood events in the Mekong Delta region...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">View PDF</a>
+                        <a href="#" class="publication-link secondary">Cite</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type journal">Journal Article</span>
+                    <h3>Satellite-based Crop Yield Prediction Using Machine Learning: Evidence from Rice Production in Southeast Asia</h3>
+                    <p class="publication-authors">Rahman, M., Singh, A., & Tanaka, H.</p>
+                    <div class="publication-meta">
+                        <span>Agricultural Systems, 2024</span>
+                        <span>DOI: 10.1016/j.agsy.2024.xxxxx</span>
+                    </div>
+                    <p class="publication-abstract">We develop a machine learning pipeline combining Sentinel-2 imagery with meteorological data to predict rice yields at district level with 87% accuracy, enabling early warning systems for food security...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">View PDF</a>
+                        <a href="#" class="publication-link secondary">Cite</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type journal">Journal Article</span>
+                    <h3>Urban Heat Island Dynamics in Mega-Cities of South Asia: A Multi-sensor Remote Sensing Analysis</h3>
+                    <p class="publication-authors">Sharma, P., Lee, J., & Abdullah, F.</p>
+                    <div class="publication-meta">
+                        <span>Urban Climate, 2023</span>
+                        <span>DOI: 10.1016/j.uclim.2023.xxxxx</span>
+                    </div>
+                    <p class="publication-abstract">This research quantifies urban heat island intensity across 12 South Asian mega-cities using Landsat-8 and MODIS thermal data, revealing critical relationships between urban morphology and surface temperature...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">View PDF</a>
+                        <a href="#" class="publication-link secondary">Cite</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="working-papers" class="tab-content">
+                <div class="publication-card">
+                    <span class="publication-type working">ESCAP Working Paper</span>
+                    <h3>Satellite Intelligence for SDG Monitoring: A Framework for National Statistical Offices in Asia-Pacific</h3>
+                    <p class="publication-authors">ESCAP Statistics Division</p>
+                    <div class="publication-meta">
+                        <span>ESCAP/WP/2024/01</span>
+                        <span>Published: March 2024</span>
+                    </div>
+                    <p class="publication-abstract">This working paper provides practical guidance for national statistical offices on integrating satellite-derived indicators into official statistics for SDG reporting...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">Download PDF</a>
+                        <a href="#" class="publication-link secondary">Executive Summary</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type working">ESCAP Working Paper</span>
+                    <h3>Capacity Building Needs Assessment: Geospatial AI Applications for Disaster Risk Reduction</h3>
+                    <p class="publication-authors">ESCAP ICT and Disaster Risk Reduction Division</p>
+                    <div class="publication-meta">
+                        <span>ESCAP/WP/2024/02</span>
+                        <span>Published: June 2024</span>
+                    </div>
+                    <p class="publication-abstract">A comprehensive assessment of technical capacity gaps and training needs across ESCAP member states for implementing AI-based disaster early warning systems...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">Download PDF</a>
+                        <a href="#" class="publication-link secondary">Executive Summary</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type working">ESCAP Working Paper</span>
+                    <h3>Open Data Policies for Earth Observation: Best Practices and Recommendations</h3>
+                    <p class="publication-authors">ESCAP Space Applications Section</p>
+                    <div class="publication-meta">
+                        <span>ESCAP/WP/2023/05</span>
+                        <span>Published: November 2023</span>
+                    </div>
+                    <p class="publication-abstract">This paper reviews open data policies for satellite imagery across the region and provides recommendations for maximizing the societal benefits of Earth observation data...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">Download PDF</a>
+                        <a href="#" class="publication-link secondary">Executive Summary</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="blogs" class="tab-content">
+                <div class="publication-card">
+                    <span class="publication-type blog">Technical Blog</span>
+                    <h3>Getting Started with SatGPT: A Beginner's Guide to AI-Powered Satellite Analysis</h3>
+                    <p class="publication-authors">SatGPT Hub Team</p>
+                    <div class="publication-meta">
+                        <span>Published: January 15, 2025</span>
+                        <span>5 min read</span>
+                    </div>
+                    <p class="publication-abstract">Learn how to leverage SatGPT's natural language interface to query satellite data, generate analysis scripts, and create visualizations without extensive coding knowledge...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type blog">Technical Blog</span>
+                    <h3>Monitoring the 2024 Monsoon Season: Real-time Flood Mapping in Bangladesh</h3>
+                    <p class="publication-authors">Dr. Aminul Islam</p>
+                    <div class="publication-meta">
+                        <span>Published: December 10, 2024</span>
+                        <span>8 min read</span>
+                    </div>
+                    <p class="publication-abstract">A case study on deploying rapid flood mapping workflows during the 2024 monsoon, demonstrating how satellite data supported emergency response coordination...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type blog">Technical Blog</span>
+                    <h3>From Pixels to Policy: How Thailand Uses Satellite Data for Agricultural Insurance</h3>
+                    <p class="publication-authors">Somchai Prasert</p>
+                    <div class="publication-meta">
+                        <span>Published: November 22, 2024</span>
+                        <span>6 min read</span>
+                    </div>
+                    <p class="publication-abstract">Exploring Thailand's innovative use of satellite-derived crop damage assessments to streamline agricultural insurance claims and support smallholder farmers...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <span class="publication-type blog">Technical Blog</span>
+                    <h3>Understanding Sentinel-1 SAR for Water Body Detection: Tips and Tricks</h3>
+                    <p class="publication-authors">Maria Santos</p>
+                    <div class="publication-meta">
+                        <span>Published: October 5, 2024</span>
+                        <span>10 min read</span>
+                    </div>
+                    <p class="publication-abstract">A practical guide to working with Sentinel-1 SAR data for water body mapping, including preprocessing steps, threshold selection, and common pitfalls to avoid...</p>
+                    <div class="publication-links">
+                        <a href="#" class="publication-link primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">◉</span>
+                        <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+                    </a>
+                    <p>A UN ESCAP initiative supporting sustainable development through satellite intelligence and AI.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="elearning.html">eLearning</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 United Nations ESCAP. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

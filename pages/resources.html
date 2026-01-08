@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | SatGPT Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .resource-card {
+            display: flex;
+            gap: var(--space-xl);
+            padding: var(--space-xl);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-lg);
+            transition: var(--transition-base);
+        }
+        
+        .resource-card:hover {
+            border-color: var(--color-border-hover);
+        }
+        
+        .resource-icon {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+            background: var(--color-bg-tertiary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .resource-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .resource-content p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-accent-primary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+        
+        .quickstart-steps {
+            counter-reset: step;
+        }
+        
+        .step-card {
+            display: flex;
+            gap: var(--space-xl);
+            padding: var(--space-xl);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+        
+        .step-card::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            top: var(--space-lg);
+            left: calc(-1 * var(--space-lg));
+            width: 32px;
+            height: 32px;
+            background: var(--color-accent-primary);
+            color: var(--color-bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .step-content p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .code-block {
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-top: var(--space-md);
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--color-accent-primary);
+        }
+        
+        @media (max-width: 768px) {
+            .resource-card,
+            .step-card {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .step-card::before {
+                position: static;
+                margin-bottom: var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">◉</span>
+                <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">SatGPT</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="elearning.html">eLearning</a></li>
+                <li class="has-dropdown">
+                    <a href="resources.html" class="active">Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#quickstart">Quick Start</a></li>
+                        <li><a href="resources.html#tutorials">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="publications.html">Publications</a>
+                    <ul class="dropdown">
+                        <li><a href="publications.html#peer-reviewed">Peer-reviewed Papers</a></li>
+                        <li><a href="publications.html#working-papers">ESCAP Working Papers</a></li>
+                        <li><a href="publications.html#blogs">Blogs</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <span class="section-tag">Documentation</span>
+            <h1>Resources</h1>
+            <p>Everything you need to get started with satellite data analysis and SatGPT</p>
+        </div>
+    </header>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="quickstart">Quick Start</button>
+                <button class="tab-btn" data-tab="tutorials">Tutorials</button>
+            </div>
+
+            <div id="quickstart" class="tab-content active">
+                <div class="section-header" style="text-align: left; margin-bottom: var(--space-xl);">
+                    <h2>Get Started in 5 Minutes</h2>
+                    <p>Follow these steps to begin analyzing satellite data with SatGPT</p>
+                </div>
+                
+                <div class="quickstart-steps" style="padding-left: var(--space-xl);">
+                    <div class="step-card">
+                        <div class="step-content">
+                            <h3>Create Your Account</h3>
+                            <p>Sign up for a free SatGPT Hub account to access all platform features including case studies, data dashboards, and eLearning modules.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-content">
+                            <h3>Set Up Google Earth Engine</h3>
+                            <p>Register for Google Earth Engine access to process satellite imagery at scale. This is required for most analysis workflows.</p>
+                            <div class="code-block">
+                                <code>// Initialize Earth Engine<br>ee.Initialize()</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-content">
+                            <h3>Explore Sample Datasets</h3>
+                            <p>Browse our curated collection of analysis-ready datasets covering agriculture, water resources, disasters, and urban development across Asia-Pacific.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-content">
+                            <h3>Run Your First Analysis</h3>
+                            <p>Use our pre-built templates to perform common analyses like NDVI computation, flood mapping, or land cover classification.</p>
+                            <div class="code-block">
+                                <code>// Compute NDVI<br>var ndvi = image.normalizedDifference(['B8', 'B4']);</code>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-content">
+                            <h3>Share Your Results</h3>
+                            <p>Export your analysis results, create interactive maps, and share insights with stakeholders through our dashboard tools.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tutorials" class="tab-content">
+                <div class="section-header" style="text-align: left; margin-bottom: var(--space-xl);">
+                    <h2>Step-by-Step Tutorials</h2>
+                    <p>Comprehensive guides for specific analysis workflows</p>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🌾</div>
+                    <div class="resource-content">
+                        <h3>Crop Mapping with Sentinel-2</h3>
+                        <p>Learn to identify and map crop types using multi-temporal Sentinel-2 imagery and machine learning classification.</p>
+                        <a href="#" class="resource-link">View Tutorial →</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🌊</div>
+                    <div class="resource-content">
+                        <h3>Flood Extent Mapping with SAR</h3>
+                        <p>Extract flood boundaries from Sentinel-1 SAR imagery using change detection and thresholding techniques.</p>
+                        <a href="#" class="resource-link">View Tutorial →</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🏙️</div>
+                    <div class="resource-content">
+                        <h3>Urban Growth Analysis</h3>
+                        <p>Monitor urban expansion over time using Landsat time series and supervised classification methods.</p>
+                        <a href="#" class="resource-link">View Tutorial →</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">💧</div>
+                    <div class="resource-content">
+                        <h3>Water Body Detection</h3>
+                        <p>Identify and monitor lakes, rivers, and reservoirs using spectral indices and time series analysis.</p>
+                        <a href="#" class="resource-link">View Tutorial →</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🔥</div>
+                    <div class="resource-content">
+                        <h3>Fire Detection & Monitoring</h3>
+                        <p>Detect active fires and map burn scars using thermal bands and spectral indices from MODIS and Sentinel-2.</p>
+                        <a href="#" class="resource-link">View Tutorial →</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">🌲</div>
+                    <div class="resource-content">
+                        <h3>Forest Cover Change Detection</h3>
+                        <p>Monitor deforestation and forest degradation using Hansen Global Forest Change data and custom analysis.</p>
+                        <a href="#" class="resource-link">View Tutorial →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">◉</span>
+                        <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+                    </a>
+                    <p>A UN ESCAP initiative supporting sustainable development through satellite intelligence and AI.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="elearning.html">eLearning</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 United Nations ESCAP. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

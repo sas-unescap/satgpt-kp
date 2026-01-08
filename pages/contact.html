@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | SatGPT Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: var(--space-3xl);
+        }
+        
+        .contact-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .contact-info > p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-xl);
+            line-height: 1.7;
+        }
+        
+        .contact-method {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+        }
+        
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            background: var(--color-bg-tertiary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .contact-method-content h3 {
+            font-size: 1rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contact-method-content p {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .contact-method-content a {
+            color: var(--color-accent-primary);
+        }
+        
+        .contact-form-wrapper {
+            padding: var(--space-2xl);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+        }
+        
+        .contact-form-wrapper h2 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+        
+        .form-submit {
+            margin-top: var(--space-lg);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            color: var(--color-text-secondary);
+            font-size: 1.25rem;
+            transition: var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            border-color: var(--color-accent-primary);
+            color: var(--color-accent-primary);
+        }
+        
+        @media (max-width: 1024px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">◉</span>
+                <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">SatGPT</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="elearning.html">eLearning</a></li>
+                <li class="has-dropdown">
+                    <a href="resources.html">Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#quickstart">Quick Start</a></li>
+                        <li><a href="resources.html#tutorials">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="publications.html">Publications</a>
+                    <ul class="dropdown">
+                        <li><a href="publications.html#peer-reviewed">Peer-reviewed Papers</a></li>
+                        <li><a href="publications.html#working-papers">ESCAP Working Papers</a></li>
+                        <li><a href="publications.html#blogs">Blogs</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <span class="section-tag">Get in Touch</span>
+            <h1>Contact Us</h1>
+            <p>Have questions about SatGPT Hub? We'd love to hear from you.</p>
+        </div>
+    </header>
+
+    <section class="page-content">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <h2>Let's Connect</h2>
+                    <p>Whether you have questions about the platform, want to collaborate on a project, or need technical support, our team is here to help.</p>
+                    
+                    <div class="contact-method">
+                        <div class="contact-method-icon">📧</div>
+                        <div class="contact-method-content">
+                            <h3>Email</h3>
+                            <p><a href="mailto:satgpt@un.org">satgpt@un.org</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-method-icon">🏢</div>
+                        <div class="contact-method-content">
+                            <h3>Office</h3>
+                            <p>United Nations Building<br>Rajadamnern Nok Avenue<br>Bangkok 10200, Thailand</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-method-icon">🌐</div>
+                        <div class="contact-method-content">
+                            <h3>Website</h3>
+                            <p><a href="https://www.unescap.org" target="_blank">www.unescap.org</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+                        <a href="#" class="social-link" aria-label="GitHub">⌘</a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <h2>Send us a Message</h2>
+                    <div id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="organization">Organization</label>
+                                <input type="text" id="organization" name="organization" class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us how we can help..."></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="button" class="btn btn-primary" onclick="alert('Thank you for your message! This is a demo form.')">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">◉</span>
+                        <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+                    </a>
+                    <p>A UN ESCAP initiative supporting sustainable development through satellite intelligence and AI.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="elearning.html">eLearning</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 United Nations ESCAP. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

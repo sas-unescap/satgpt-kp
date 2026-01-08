@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies | SatGPT Hub</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .case-studies-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            min-height: calc(100vh - 72px);
+            margin-top: 72px;
+        }
+        
+        .map-panel {
+            position: sticky;
+            top: 72px;
+            height: calc(100vh - 72px);
+        }
+        
+        #case-study-map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .cases-panel {
+            background: var(--color-bg-secondary);
+            border-left: 1px solid var(--color-border);
+            overflow-y: auto;
+            max-height: calc(100vh - 72px);
+        }
+        
+        .cases-header {
+            padding: var(--space-xl);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            background: var(--color-bg-secondary);
+            z-index: 10;
+        }
+        
+        .cases-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .cases-header p {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            border-bottom: 1px solid var(--color-border);
+            overflow-x: auto;
+        }
+        
+        .filter-btn {
+            padding: var(--space-sm) var(--space-md);
+            font-size: 0.8rem;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-full);
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition-fast);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-accent-primary);
+            border-color: var(--color-accent-primary);
+            color: var(--color-bg-primary);
+        }
+        
+        .cases-list {
+            padding: var(--space-md);
+        }
+        
+        .case-item {
+            padding: var(--space-lg);
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+        
+        .case-item:hover {
+            border-color: var(--color-border-hover);
+            transform: translateX(-4px);
+        }
+        
+        .case-item-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .case-category {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-sm);
+            flex-shrink: 0;
+        }
+        
+        .case-category.agriculture { background: rgba(0, 212, 170, 0.15); color: #00d4aa; }
+        .case-category.water { background: rgba(0, 153, 255, 0.15); color: #0099ff; }
+        .case-category.disaster { background: rgba(255, 107, 53, 0.15); color: #ff6b35; }
+        .case-category.urban { background: rgba(168, 85, 247, 0.15); color: #a855f7; }
+        
+        .case-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .case-item p {
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .case-meta {
+            display: flex;
+            gap: var(--space-md);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+        
+        .case-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        @media (max-width: 1024px) {
+            .case-studies-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-panel {
+                position: relative;
+                height: 50vh;
+                top: 0;
+            }
+            
+            .cases-panel {
+                max-height: none;
+                border-left: none;
+                border-top: 1px solid var(--color-border);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">◉</span>
+                <span class="logo-text">SatGPT<span class="logo-highlight">Hub</span></span>
+            </a>
+            
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="../index.html">SatGPT</a></li>
+                <li><a href="case-studies.html" class="active">Case Studies</a></li>
+                <li><a href="elearning.html">eLearning</a></li>
+                <li class="has-dropdown">
+                    <a href="resources.html">Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="resources.html#quickstart">Quick Start</a></li>
+                        <li><a href="resources.html#tutorials">Tutorials</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="publications.html">Publications</a>
+                    <ul class="dropdown">
+                        <li><a href="publications.html#peer-reviewed">Peer-reviewed Papers</a></li>
+                        <li><a href="publications.html#working-papers">ESCAP Working Papers</a></li>
+                        <li><a href="publications.html#blogs">Blogs</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="about.html">About</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#escap">ESCAP</a></li>
+                        <li><a href="about.html#partners">Partners</a></li>
+                        <li><a href="about.html#contributors">Contributors</a></li>
+                    </ul>
+                </li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="case-studies-layout">
+        <div class="map-panel">
+            <div id="case-study-map"></div>
+        </div>
+        
+        <div class="cases-panel">
+            <div class="cases-header">
+                <h1>Case Studies</h1>
+                <p>Explore satellite-derived insights across the Asia-Pacific region</p>
+            </div>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="agriculture">Agriculture</button>
+                <button class="filter-btn" data-filter="water">Water</button>
+                <button class="filter-btn" data-filter="disaster">Disaster</button>
+                <button class="filter-btn" data-filter="urban">Urban</button>
+            </div>
+            
+            <div class="cases-list">
+                <div class="case-item" data-category="disaster" data-coords="13.7563,100.5018">
+                    <div class="case-item-header">
+                        <h3>Bangkok Flood Monitoring</h3>
+                        <span class="case-category disaster">Disaster</span>
+                    </div>
+                    <p>Real-time flood extent mapping using Sentinel-1 SAR data for early warning and response coordination.</p>
+                    <div class="case-meta">
+                        <span>📍 Thailand</span>
+                        <span>📅 2024</span>
+                        <span>🛰️ Sentinel-1</span>
+                    </div>
+                </div>
+                
+                <div class="case-item" data-category="agriculture" data-coords="28.3949,84.1240">
+                    <div class="case-item-header">
+                        <h3>Nepal Agricultural Assessment</h3>
+                        <span class="case-category agriculture">Agriculture</span>
+                    </div>
+                    <p>Crop yield estimation using multi-spectral satellite imagery for food security monitoring.</p>
+                    <div class="case-meta">
+                        <span>📍 Nepal</span>
+                        <span>📅 2024</span>
+                        <span>🛰️ Sentinel-2</span>
+                    </div>
+                </div>
+                
+                <div class="case-item" data-category="water" data-coords="35.8617,104.1954">
+                    <div class="case-item-header">
+                        <h3>China Water Resources</h3>
+                        <span class="case-category water">Water</span>
+                    </div>
+                    <p>Lake and reservoir monitoring across the Yangtze basin using optical and radar imagery.</p>
+                    <div class="case-meta">
+                        <span>📍 China</span>
+                        <span>📅 2024</span>
+                        <span>🛰️ Landsat-9</span>
+                    </div>
+                </div>
+                
+                <div class="case-item" data-category="urban" data-coords="21.0285,105.8542">
+                    <div class="case-item-header">
+                        <h3>Hanoi Urban Growth</h3>
+                        <span class="case-category urban">Urban</span>
+                    </div>
+                    <p>Urban expansion analysis using time-series Landsat data for sustainable city planning.</p>
+                    <div class="case-meta">
+                        <span>📍 Vietnam</span>
+                        <span>📅 2023</span>
+                        <span>🛰️ Landsat</span>
+                    </div>
+                </div>
+                
+                <div class="case-item" data-category="disaster" data-coords="-6.2088,106.8456">
+                    <div class="case-item-header">
+                        <h3>Jakarta Land Subsidence</h3>
+                        <span class="case-category disaster">Disaster</span>
+                    </div>
+                    <p>InSAR-based ground deformation monitoring for infrastructure risk assessment.</p>
+                    <div class="case-meta">
+                        <span>📍 Indonesia</span>
+                        <span>📅 2024</span>
+                        <span>🛰️ Sentinel-1</span>
+                    </div>
+                </div>
+                
+                <div class="case-item" data-category="water" data-coords="14.5995,120.9842">
+                    <div class="case-item-header">
+                        <h3>Manila Coastal Mapping</h3>
+                        <span class="case-category water">Water</span>
+                    </div>
+                    <p>Coastal erosion and mangrove monitoring for ecosystem conservation.</p>
+                    <div class="case-meta">
+                        <span>📍 Philippines</span>
+                        <span>📅 2024</span>
+                        <span>🛰️ Sentinel-2</span>
+                    </div>
+                </div>
+                
+                <div class="case-item" data-category="agriculture" data-coords="23.8103,90.4125">
+                    <div class="case-item-header">
+                        <h3>Bangladesh Rice Monitoring</h3>
+                        <span class="case-category agriculture">Agriculture</span>
+                    </div>
+                    <p>Paddy rice mapping using radar imagery for agricultural statistics.</p>
+                    <div class="case-meta">
+                        <span>📍 Bangladesh</span>
+                        <span>📅 2024</span>
+                        <span>🛰️ Sentinel-1</span>
+                    </div>
+                </div>
+                
+                <div class="case-item" data-category="urban" data-coords="1.3521,103.8198">
+                    <div class="case-item-header">
+                        <h3>Singapore Urban Heat</h3>
+                        <span class="case-category urban">Urban</span>
+                    </div>
+                    <p>Urban heat island analysis using thermal imagery for climate adaptation.</p>
+                    <div class="case-meta">
+                        <span>📍 Singapore</span>
+                        <span>📅 2024</span>
+                        <span>🛰️ Landsat-9</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize map
+            const map = L.map('case-study-map', {
+                center: [20, 100],
+                zoom: 4
+            });
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap &copy; CARTO',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Category colors
+            const colors = {
+                agriculture: '#00d4aa',
+                water: '#0099ff',
+                disaster: '#ff6b35',
+                urban: '#a855f7'
+            };
+
+            // Create markers for each case
+            const markers = {};
+            document.querySelectorAll('.case-item').forEach(item => {
+                const coords = item.dataset.coords.split(',').map(Number);
+                const category = item.dataset.category;
+                const title = item.querySelector('h3').textContent;
+                
+                const marker = L.circleMarker(coords, {
+                    radius: 8,
+                    fillColor: colors[category],
+                    color: '#0a0e17',
+                    weight: 2,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                marker.bindPopup(`<strong>${title}</strong>`);
+                markers[title] = { marker, coords };
+                
+                // Click to fly to location
+                item.addEventListener('click', () => {
+                    map.flyTo(coords, 8, { duration: 1 });
+                    marker.openPopup();
+                });
+            });
+
+            // Filter functionality
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    document.querySelectorAll('.case-item').forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
