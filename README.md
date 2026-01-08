@@ -4,8 +4,6 @@
 
 SatGPT is an innovative solution that integrates Large Language Models (LLMs), cloud computing platforms, and Earth observation data for flood hotspot mapping. SatGPT represents a fully functional, next-generation spatial decision support system designed for rapid deployment, particularly in resource-limited contexts.
 
-![SatGPT Hub Preview](assets/preview.png)
-
 ## 🚀 Quick Start
 
 ### Deploy to GitHub Pages
