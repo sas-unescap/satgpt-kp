@@ -1,6 +1,6 @@
 /* ============================================
-   SatGPT Hub - Design System
-   UN ESCAP Knowledge Platform
+   SatGPT Knowledge Portal - Design System
+   UN ESCAP Knowledge-Sharing Platform
    ============================================ */
 
 /* CSS Variables */
@@ -40,8 +40,8 @@
     --color-border-hover: rgba(0, 158, 219, 0.4);
     
     /* Typography */
-    --font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'Space Mono', monospace;
+    --font-primary: 'Cal Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Inter', monospace;
     
     /* Spacing */
     --space-xs: 0.25rem;
