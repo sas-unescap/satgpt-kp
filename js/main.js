@@ -84,69 +84,69 @@ function initMap() {
         scrollWheelZoom: false
     });
 
-    // Dark theme map tiles
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    // Light theme map tiles
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 19
     }).addTo(map);
 
-    // Sample case study markers
+    // Sample case study markers - UN Color Palette
     const caseStudies = [
         {
             coords: [13.7563, 100.5018],
             title: 'Bangkok Flood Monitoring',
             category: 'Disaster Risk Reduction',
-            color: '#ff6b35',
+            color: '#ED1847',  // UN Red
             description: 'Real-time flood extent mapping using Sentinel-1 SAR data.'
         },
         {
             coords: [28.3949, 84.1240],
             title: 'Nepal Agricultural Assessment',
             category: 'Agriculture & Food Security',
-            color: '#00d4aa',
+            color: '#72BF44',  // UN Green
             description: 'Crop yield estimation using multi-spectral satellite imagery.'
         },
         {
             coords: [35.8617, 104.1954],
             title: 'China Water Resources',
             category: 'Water Resources',
-            color: '#0099ff',
+            color: '#009EDB',  // UN Blue
             description: 'Lake and reservoir monitoring across the Yangtze basin.'
         },
         {
             coords: [21.0285, 105.8542],
             title: 'Hanoi Urban Growth',
             category: 'Urban Development',
-            color: '#a855f7',
+            color: '#A05FB4',  // UN Purple
             description: 'Urban expansion analysis using time-series Landsat data.'
         },
         {
             coords: [-6.2088, 106.8456],
             title: 'Jakarta Land Subsidence',
             category: 'Disaster Risk Reduction',
-            color: '#ff6b35',
+            color: '#ED1847',  // UN Red
             description: 'InSAR-based ground deformation monitoring.'
         },
         {
             coords: [14.5995, 120.9842],
             title: 'Manila Coastal Mapping',
             category: 'Water Resources',
-            color: '#0099ff',
+            color: '#009EDB',  // UN Blue
             description: 'Coastal erosion and mangrove monitoring.'
         },
         {
             coords: [23.8103, 90.4125],
             title: 'Bangladesh Rice Monitoring',
             category: 'Agriculture & Food Security',
-            color: '#00d4aa',
+            color: '#72BF44',  // UN Green
             description: 'Paddy rice mapping using radar imagery.'
         },
         {
             coords: [1.3521, 103.8198],
             title: 'Singapore Urban Heat',
             category: 'Urban Development',
-            color: '#a855f7',
+            color: '#A05FB4',  // UN Purple
             description: 'Urban heat island analysis using thermal imagery.'
         }
     ];
@@ -160,8 +160,8 @@ function initMap() {
                 height: 16px;
                 background: ${color};
                 border-radius: 50%;
-                border: 3px solid #0a0e17;
-                box-shadow: 0 0 15px ${color}80;
+                border: 3px solid #ffffff;
+                box-shadow: 0 2px 8px ${color}60;
             "></div>`,
             iconSize: [16, 16],
             iconAnchor: [8, 8],
