@@ -1,6 +1,6 @@
 /* ============================================
-   SatGPT Hub - Design System
-   UN ESCAP Knowledge Platform
+   SatGPT Knowledge Portal - Design System
+   UN ESCAP Knowledge-Sharing Platform
    ============================================ */
 
 /* CSS Variables */
@@ -25,7 +25,7 @@
     
     /* Typography */
     --font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'Space Mono', monospace;
+    --font-mono: 'Inter', monospace;
     
     /* Spacing */
     --space-xs: 0.25rem;
